@@ -13,33 +13,33 @@
   <link rel="stylesheet" href="https://cdn.rawgit.com/maybegeek/neogridic/655ed867/neogridic.min.css">
   <link rel="stylesheet" href="{{ theme_url }}/css/style.css">
 </head>
-<body>
+<body class="grid w960">
 
-  <header>
-    <h1><a href="{{ "index"|link }}">{{ site_title }}</a></h1>
+  <header class="row">
+    <h1 class="c12"><a href="{{ "index"|link }}">{{ site_title }}</a></h1>
   </header>
 
-  <nav>
-    <ul>
-    {% for page in pages if page.title and not page.hidden %}
-      {% set pageDepth = page.id|split('/')|length %}
-      {% if (pageDepth == 2) and (page.id ends with "/index") or (pageDepth == 1) %}
-        <li{% if page.id == current_page.id %} class="active"{% endif %}>
-          <a href="{{ page.url }}">{{ page.title }}</a>
-        </li>
-      {% endif %}
-    {% endfor %}
-  </ul>
+  <nav class="row">
+    <ul class="c12">
+      {% for page in pages if page.title and not page.hidden %}
+        {% set pageDepth = page.id|split('/')|length %}
+        {% if (pageDepth == 2) and (page.id ends with "/index") or (pageDepth == 1) %}
+          <li{% if page.id == current_page.id %} class="active"{% endif %}>
+            <a href="{{ page.url }}">{{ page.title }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
   </nav>
 
-  <main>
-    <div class="container">
+  <main class="row">
+    <div class="container c12">
       {{ content }}
     </div>
   </main>
 
-  <footer>
-    <p>Dies steht am Ender der Seite.</p>
+  <footer class="row">
+    <p class="c12">Dies steht am Ender der Seite.</p>
   </footer>
 
 </body>
