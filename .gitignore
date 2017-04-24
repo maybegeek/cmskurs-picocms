@@ -1,0 +1,9 @@
+/config/
+/lib/
+/plugins/
+/vendor/
+/.htaccess
+/CHANGELOG.md
+/composer.json
+/composer.lock
+/CONTRIBUTING.md
