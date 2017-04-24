@@ -15,53 +15,32 @@
 </head>
 <body>
 
-  <div id="header">
-    <div class="container">
-      <a id="nav-toggle" title="Toggle Menu" role="button" aria-controls="nav" aria-expanded="false" tabindex="1">
-        <span class="icon-menu" aria-hidden="true"></span>
-        <span class="sr-only">Toggle Menu</span>
-      </a>
-      <h1>
-        <a href="{{ "index"|link }}">{{ site_title }}</a>
-      </h1>
-      <div id="nav" role="region" tabindex="-1">
-        <ul>
-          {% for page in pages if page.title and not page.hidden %}
-            {% set pageDepth = page.id|split('/')|length %}
-            {% if (pageDepth == 2) and (page.id ends with "/index") or (pageDepth == 1) %}
-              <li{% if page.id == current_page.id %} class="active"{% endif %}>
-                <a href="{{ page.url }}">{{ page.title }}</a>
-              </li>
-            {% endif %}
-          {% endfor %}
-        </ul>
-      </div>
-    </div>
-  </div>
+  <header>
+    <h1><a href="{{ "index"|link }}">{{ site_title }}</a></h1>
+  </header>
 
-  <div id="main">
+  <nav>
+    <ul>
+    {% for page in pages if page.title and not page.hidden %}
+      {% set pageDepth = page.id|split('/')|length %}
+      {% if (pageDepth == 2) and (page.id ends with "/index") or (pageDepth == 1) %}
+        <li{% if page.id == current_page.id %} class="active"{% endif %}>
+          <a href="{{ page.url }}">{{ page.title }}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  </nav>
+
+  <main>
     <div class="container">
       {{ content }}
     </div>
-  </div>
+  </main>
 
-  <div id="footer">
-    <div class="container">
-      <div class="social">
-        {% for social in pages._meta.meta.social %}
-          <a href="{{ social.url }}" title="{{ social.title }}" role="button">
-            <span class="icon-{{ social.icon }}" aria-hidden="true"></span>
-            <span class="sr-only">{{ social.title }}</span>
-          </a>
-        {% endfor %}
-      </div>
-      <p>
-        <a href="http://picocms.org/">Pico</a> was made by <a href="http://gilbert.pellegrom.me">Gilbert Pellegrom</a>
-        and is maintained by <a href="https://github.com/picocms/Pico/graphs/contributors">The Pico Community</a>.
-        Released under the <a href="https://github.com/picocms/Pico/blob/master/LICENSE.md">MIT license</a>.
-      </p>
-    </div>
-  </div>
+  <footer>
+    <p>Dies steht am Ender der Seite.</p>
+  </footer>
 
 </body>
 </html>
