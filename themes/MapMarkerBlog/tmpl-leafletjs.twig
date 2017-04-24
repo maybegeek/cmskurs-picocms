@@ -1,0 +1,51 @@
+{# partial template (leafletjs) #}
+{% if meta.template == 'marker' %}
+<script>
+  var map = L.map('singlemap', {
+    center: [49.017, 12.097],
+    zoom: 15,
+    zoomControl: true
+  });
+
+  var osmAttrib='Map data © OpenStreetMap contributors';
+  L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: osmAttrib
+  }).addTo(map);
+
+  L.marker([{{ meta.lgrad }},{{ meta.bgrad }}], {title: "{{ meta.objtitel }}, {{ meta.objdatum }}, {{ meta.objzeit }} ({{ meta.objurheber }})"}).addTo(map).bindPopup('<h3>{{ meta.objtitel }}, {{ meta.objdatum }} {{ meta.objzeit }} ({{ meta.objurheber }})</h3><p>{{ meta.objteaser }}</p>');
+
+</script>
+{% endif %}
+
+{% if meta.template == 'karte' %}
+<script>
+  var gruppe1 = new L.layerGroup();
+  var gruppe2 = new L.layerGroup();
+
+  {% for page in pages %}
+  {% if page.id starts with "marker/" %}
+  L.marker([{{ page.meta.lgrad }}, {{ page.meta.bgrad }}], {title: "{{ page.meta.objtitel }}, {{ page.meta.objdatum }}, {{ page.meta.objzeit }} ({{ page.meta.objurheber }})"}).bindPopup('<h3>{{ page.meta.objtitel }}, {{ page.meta.objdatum }} {{ page.meta.objzeit }} ({{ page.meta.objurheber }})</h3><p>{{ page.meta.objteaser }}</p><p>Weiteres <a href="{{ page.url }}">zum Objekt</a></p>').addTo(gruppe{{ page.meta.objgruppe }});
+  {% endif %}
+  {% endfor %}
+
+  var map = L.map('mapid', {
+    center: [49.017, 12.097],
+    zoom: 15,
+    zoomControl: true,
+    layers: [gruppe1,gruppe2]
+  });
+
+  var osmAttrib='Map data © OpenStreetMap contributors';
+  L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: osmAttrib
+  }).addTo(map);
+
+  var overlays = {
+    "Gruppe 1" : gruppe1,
+    "Gruppe 2" : gruppe2};
+  L.control.layers('', overlays).addTo(map);
+  map.removeLayer();
+</script>
+{% endif %}

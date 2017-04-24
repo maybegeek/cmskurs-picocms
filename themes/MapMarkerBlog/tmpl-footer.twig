@@ -1,0 +1,14 @@
+{# partial template (footer) #}
+<footer class="grid{% if not ( meta.template == 'marker' ) %} w960{% endif %}">
+  <div class="row">
+    <p class="c12">Dies steht am Ende der Seite.</p>
+  </div>
+</footer>
+
+{% if ( meta.template == 'karte' or meta.template == 'marker' ) %}
+{# partial template: get(leafletjs) #}
+{% include 'tmpl-leafletjs.twig' %}
+{% endif %}
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+{# partial template: get(header) #}
+{% include 'tmpl-header.twig' %}
+<body>
+
+  <header class="grid w960">
+    <div class="row">
+      <h1 class="c12"><a href="{{ "index"|link }}">{{ site_title }}</a></h1>
+    </div>
+  </header>
+
+  {# partial template: get(nav) #}
+  {% include 'tmpl-nav.twig' %}
+
+  <section class="grid">
+    <div class="row">
+      <div id="singlemap" class="map c8">
+      </div>
+      <div class="meta c4">
+        <ul>
+          <li>Längengrad: {{ meta.lgrad }}</li>
+          <li>Breitengrad: {{ meta.bgrad }}</li>
+          <li>Objekt-Titel: {{ meta.objtitel }}</li>
+          <li>Objekt-Datum: {{ meta.objdatum }}</li>
+          <li>Objekt-Zeit: {{ meta.objzeit }}</li>
+          <li>Objekt-Urheber: {{ meta.objurheber }}</li>
+          <li>Objekt-Teaser: {{ meta.objteaser }}</li>
+          <li>Objekt-Gruppe: {{ meta.objgruppe }}</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <main class="grid">
+    <div class="row">
+      <div class="container c12">
+        {{ content }}
+      </div>
+    </div>
+  </main>
+
+{# partial template: get(footer) #}
+{% include 'tmpl-footer.twig' %}

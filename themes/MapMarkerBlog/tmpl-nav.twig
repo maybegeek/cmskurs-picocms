@@ -1,0 +1,15 @@
+{# partial template (nav) #}
+<nav class="grid w960">
+  <div class="row">
+    <ul class="c12">
+      {% for page in pages if page.title and not page.hidden %}
+        {% set pageDepth = page.id|split('/')|length %}
+        {% if (pageDepth == 2) and (page.id ends with "/index") or (pageDepth == 1) %}
+          <li{% if page.id == current_page.id %} class="active"{% endif %}>
+            <a href="{{ page.url }}">{{ page.title }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</nav>

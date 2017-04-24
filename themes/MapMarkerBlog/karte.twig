@@ -1,1 +1,22 @@
-blaaa
+{# partial template: specific(karte) #}
+{# partial template: get(header) #}
+{% include 'tmpl-header.twig' %}
+<body>
+
+  <header class="grid w960">
+    <div class="row">
+      <h1 class="c12"><a href="{{ "index"|link }}">{{ site_title }}</a></h1>
+    </div>
+  </header>
+
+  {# partial template: get(nav) #}
+  {% include 'tmpl-nav.twig' %}
+
+  <div class="grid wfull">
+    <div class="row">
+      <div class="c12" id="mapid"></div>
+    </div>
+  </div>
+
+{# partial template: get(footer) #}
+{% include 'tmpl-footer.twig' %}
