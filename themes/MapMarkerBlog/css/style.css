@@ -3,6 +3,44 @@ html {
 }
 
 body {
-  font-size: 1.2em;
+  font-size: 1.14em;
   font-family: 'Averia Serif Libre', serif;
+  background-color: rgba(236, 240, 241,1.0);
+  color: rgba(44, 62, 80,1.0);
+}
+
+a {
+  text-decoration: none;
+  color: rgba(44, 62, 80,1.0);
+  border-bottom: 2px dotted;
+  transition: background-color 0.5s ease;
+}
+
+a:hover {
+  background-color: rgba(230, 126, 34,1.0)
+}
+
+nav ul {
+  list-style: none;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+nav ul li {
+  display: inline-block;
+}
+
+nav ul li.active a {
+  border-bottom: 2px solid;
+}
+
+pre {
+  overflow: auto;
+  word-wrap: normal;
+  white-space: pre;
+  font-size: 0.7em;
+}
+
+code {
+  font-size: 0.7em;
 }
