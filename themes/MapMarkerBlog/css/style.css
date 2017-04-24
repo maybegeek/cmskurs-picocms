@@ -28,6 +28,11 @@ nav ul {
 
 nav ul li {
   display: inline-block;
+  padding-right: 0.5em;
+}
+
+nav ul li:list-child {
+  padding-right: 0;
 }
 
 nav ul li.active a {
@@ -43,4 +48,25 @@ pre {
 
 code {
   font-size: 0.7em;
+}
+
+/* Karte */
+div#mapid {
+  height: 600px;
+}
+
+/* single-view Karte im marker.twig */
+
+div#singlemap {
+  height: 500px;
+}
+
+div.meta ul {
+  margin-top: 0;
+  line-height: 1.2;
+  list-style-type: none;
+}
+
+div.meta ul li {
+  margin-bottom: 0.6em;
 }
